@@ -12,9 +12,9 @@ import {
 const App = () => {
   // HINT: each "item" in our list names a name, a boolean to tell if its been completed, and a quantity
   const [items, setItems] = useState([
-    { itemName: 'item 1', quantity: 1, isSelected: false },
-    { itemName: 'item 2', quantity: 3, isSelected: false },
-    { itemName: 'item 3', quantity: 2, isSelected: false },
+    { itemName: 'item 1', quantity: 0, isSelected: false },
+    { itemName: 'item 2', quantity: 0, isSelected: false },
+    { itemName: 'item 3', quantity: 0, isSelected: false },
   ]);
 
   const [inputValue, setInputValue] = useState('');
@@ -23,7 +23,7 @@ const App = () => {
   const handleAddButtonClick = () => {
     const newItem = {
       itemName: inputValue,
-      quantity: 1,
+      quantity: 0,
       isSelected: false,
     };
     const newItems = [...items, newItem];
@@ -36,19 +36,20 @@ const App = () => {
     const newItems = [...items];
     newItems[index].quantity++;
     setItems(newItems);
-    calculateTotal();
-    if (newItems[index].quantity <= 0) {
+    if (newItems[index].quantity < 0) {
       return (newItems[index].quantity = 0);
     }
+    calculateTotal();
   };
   const handleQuantityDecrease = (index) => {
     const newItems = [...items];
     newItems[index].quantity--;
     setItems(newItems);
-    calculateTotal();
-    if (newItems[index].quantity <= 0) {
+    console.log(newItems[0].quantity);
+    if (newItems[index].quantity < 0) {
       return (newItems[index].quantity = 0);
     }
+    calculateTotal();
   };
 
   const toggleComplete = (index) => {
