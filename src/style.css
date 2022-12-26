@@ -77,6 +77,7 @@ input:focus {
   justify-content: space-between;
   padding: 20px 0 20px 0;
   border-bottom: 1px #fbc1bb solid;
+  word-break: break-all;
 }
 
 .item-name {
@@ -112,7 +113,7 @@ input:focus {
   border-radius: 50px;
   font-size: 12px;
   color: #ec645b;
-  min-width: 70px;
+
   justify-content: space-between;
 }
 
