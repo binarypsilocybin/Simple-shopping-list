@@ -13,9 +13,11 @@ const App = () => {
   // HINT: each "item" in our list names a name, a boolean to tell if its been completed, and a quantity
   const [items, setItems] = useState([
     { itemName: 'item 1', quantity: 1, isSelected: false },
-    { itemName: 'item 2', quantity: 2, isSelected: false },
-    { itemName: 'item 3', quantity: 3, isSelected: false },
+    { itemName: 'item 2', quantity: 3, isSelected: false },
+    { itemName: 'item 3', quantity: 2, isSelected: false },
   ]);
+
+  const [inputValue, setInpuValue] = useState('');
 
   return (
     <div className="app-background">
@@ -25,19 +27,19 @@ const App = () => {
           <FontAwesomeIcon icon={faPlus} />
         </div>
         <div className="item-list">
-          {items.map(() => {
+          {items.map((item, index) => (
             <div className="item-container">
               <div className="item-name">
                 {/* HINT: replace false with a boolean indicating the item has been completed or not */}
-                {false ? (
+                {item.isSelected ? (
                   <>
                     <FontAwesomeIcon icon={faCheckCircle} />
-                    <span className="completed">Item 1</span>
+                    <span className="completed">{item.itemName}</span>
                   </>
                 ) : (
                   <>
                     <FontAwesomeIcon icon={faCircle} />
-                    <span>Item 1</span>
+                    <span>{item.itemName}</span>
                   </>
                 )}
               </div>
@@ -45,13 +47,13 @@ const App = () => {
                 <button>
                   <FontAwesomeIcon icon={faChevronLeft} />
                 </button>
-                <span> 1 </span>
+                <span> {item.quantity} </span>
                 <button>
                   <FontAwesomeIcon icon={faChevronRight} />
                 </button>
               </div>
-            </div>;
-          })}
+            </div>
+          ))}
         </div>
         <div className="total">Total: 6</div>
       </div>
