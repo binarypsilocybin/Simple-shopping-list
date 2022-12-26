@@ -28,6 +28,7 @@ const App = () => {
     const newItems = [...items, newItem];
 
     setItems(newItems);
+    setInputValue('');
   };
 
   return (
