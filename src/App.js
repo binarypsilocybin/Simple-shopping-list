@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './style.css';
+import { useAlert } from 'react-alert';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faChevronRight,
@@ -10,6 +11,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 
 const App = () => {
+  const alert = useAlert();
   // HINT: each "item" in our list names a name, a boolean to tell if its been completed, and a quantity
   const [items, setItems] = useState([
     { itemName: 'item 1', quantity: 0, isSelected: false },
@@ -21,16 +23,20 @@ const App = () => {
   const [totalItemCount, setTotalItemCount] = useState(0);
 
   const handleAddButtonClick = () => {
-    const newItem = {
-      itemName: inputValue,
-      quantity: 0,
-      isSelected: false,
-    };
-    const newItems = [...items, newItem];
+    if (inputValue !== '') {
+      const newItem = {
+        itemName: inputValue,
+        quantity: 0,
+        isSelected: false,
+      };
+      const newItems = [...items, newItem];
 
-    setItems(newItems);
-    setInputValue('');
-    calculateTotal();
+      setItems(newItems);
+      setInputValue('');
+      calculateTotal();
+    } else {
+      return alert.show('Oh look, an alert!');
+    }
   };
   const handleQuantityIncrease = (index) => {
     const newItems = [...items];
