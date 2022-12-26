@@ -37,13 +37,18 @@ const App = () => {
     newItems[index].quantity++;
     setItems(newItems);
     calculateTotal();
+    if (newItems[index].quantity <= 0) {
+      return (newItems[index].quantity = 0);
+    }
   };
   const handleQuantityDecrease = (index) => {
     const newItems = [...items];
     newItems[index].quantity--;
     setItems(newItems);
-
     calculateTotal();
+    if (newItems[index].quantity <= 0) {
+      return (newItems[index].quantity = 0);
+    }
   };
 
   const toggleComplete = (index) => {
