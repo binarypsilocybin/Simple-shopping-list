@@ -42,6 +42,7 @@ const App = () => {
     const newItems = [...items];
     newItems[index].quantity--;
     setItems(newItems);
+
     calculateTotal();
   };
 
