@@ -30,6 +30,7 @@ const App = () => {
 
     setItems(newItems);
     setInputValue('');
+    calculateTotal();
   };
   const handleQuantityIncrease = (index) => {
     const newItems = [...items];
