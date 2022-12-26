@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import './style.css';
-import { useAlert } from 'react-alert';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faChevronRight,
@@ -11,7 +10,6 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 
 const App = () => {
-  const alert = useAlert();
   // HINT: each "item" in our list names a name, a boolean to tell if its been completed, and a quantity
   const [items, setItems] = useState([
     { itemName: 'item 1', quantity: 0, isSelected: false },
@@ -35,7 +33,7 @@ const App = () => {
       setInputValue('');
       calculateTotal();
     } else {
-      return alert.show('Oh look, an alert!');
+      console.log('escrever algo');
     }
   };
   const handleQuantityIncrease = (index) => {
