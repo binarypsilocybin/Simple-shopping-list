@@ -30,7 +30,11 @@ const App = () => {
     setItems(newItems);
     setInputValue('');
   };
-
+  const handleQuantityIncrease = (index) => {
+    const newItems = [...items];
+    newItems[index].quantity++;
+    setItems(newItems);
+  };
   return (
     <div className="app-background">
       <div className="main-container">
@@ -69,7 +73,10 @@ const App = () => {
                 </button>
                 <span> {item.quantity} </span>
                 <button>
-                  <FontAwesomeIcon icon={faChevronRight} />
+                  <FontAwesomeIcon
+                    icon={faChevronRight}
+                    onClick={() => handleQuantityIncrease(index)}
+                  />
                 </button>
               </div>
             </div>
