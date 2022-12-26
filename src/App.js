@@ -18,12 +18,16 @@ const App = () => {
   ]);
 
   const [inputValue, setInputValue] = useState('');
+
   const handleAddButtonClick = () => {
     const newItem = {
       itemName: inputValue,
       quantity: 1,
       isSelected: false,
     };
+    const newItems = [...items, newItem];
+
+    setItems(newItems);
   };
 
   return (
