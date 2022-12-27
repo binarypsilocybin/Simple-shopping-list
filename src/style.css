@@ -65,6 +65,9 @@ input::placeholder {
 input:focus {
   outline: 0;
 }
+.input-message.show {
+  display: none;
+}
 
 .item-list {
   display: flex;

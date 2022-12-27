@@ -16,6 +16,7 @@ const App = () => {
 
   const [inputValue, setInputValue] = useState('');
   const [totalItemCount, setTotalItemCount] = useState(0);
+  const [noValue, setNoValue] = useState(false);
 
   const handleAddButtonClick = () => {
     if (inputValue !== '') {
@@ -30,7 +31,7 @@ const App = () => {
       setInputValue('');
       calculateTotal();
     } else {
-      console.log('escrever algo');
+      setNoValue(true);
     }
   };
   const handleRemoveButtonClick = (index) => {
@@ -63,6 +64,11 @@ const App = () => {
     setItems(newItems);
   };
 
+  const handleInput = (event) => {
+    setInputValue(event.target.value);
+    setNoValue(false);
+  };
+
   const calculateTotal = () => {
     const totalItemCount = items.reduce((total, item) => {
       return total + item.quantity;
@@ -75,7 +81,7 @@ const App = () => {
         <div className="add-item-box">
           <input
             value={inputValue}
-            onChange={(event) => setInputValue(event.target.value)}
+            onChange={() => handleInput(event)}
             className="add-item-input"
             placeholder="Add an item..."
           />
@@ -84,11 +90,15 @@ const App = () => {
             onClick={() => handleAddButtonClick()}
           />
         </div>
+        <div className={noValue !== true ? 'input-message show' : ''}>
+          <p>Item cannot be blank.</p>
+        </div>
         <div className="item-list">
           {items.map((item, index) => (
             <div className="item-container">
               <div className="item-name" onClick={() => toggleComplete(index)}>
                 {/* HINT: replace false with a boolean indicating the item has been completed or not */}
+
                 {item.isSelected ? (
                   <>
                     <FontAwesomeIcon icon={faCheckCircle} />
