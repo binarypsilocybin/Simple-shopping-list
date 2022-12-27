@@ -7,15 +7,12 @@ import {
   faCircle,
   faCheckCircle,
   faPlus,
+  faTrashCan,
 } from '@fortawesome/free-solid-svg-icons';
 
 const App = () => {
   // HINT: each "item" in our list names a name, a boolean to tell if its been completed, and a quantity
-  const [items, setItems] = useState([
-    { itemName: 'item 1', quantity: 0, isSelected: false },
-    { itemName: 'item 2', quantity: 0, isSelected: false },
-    { itemName: 'item 3', quantity: 0, isSelected: false },
-  ]);
+  const [items, setItems] = useState([]);
 
   const [inputValue, setInputValue] = useState('');
   const [totalItemCount, setTotalItemCount] = useState(0);
@@ -36,6 +33,11 @@ const App = () => {
       console.log('escrever algo');
     }
   };
+  const handleRemoveButtonClick = (index) => {
+    setItems((itemOld) => {
+      return itemOld.filter((oldValue, i) => i !== index);
+    });
+  };
   const handleQuantityIncrease = (index) => {
     const newItems = [...items];
     newItems[index].quantity++;
@@ -49,7 +51,6 @@ const App = () => {
     const newItems = [...items];
     newItems[index].quantity--;
     setItems(newItems);
-    console.log(newItems[0].quantity);
     if (newItems[index].quantity < 0) {
       return (newItems[index].quantity = 0);
     }
@@ -114,6 +115,12 @@ const App = () => {
                     onClick={() => handleQuantityIncrease(index)}
                   />
                 </button>
+              </div>
+              <div className="item-delete">
+                <FontAwesomeIcon
+                  icon={faTrashCan}
+                  onClick={() => handleRemoveButtonClick(index)}
+                />
               </div>
             </div>
           ))}
