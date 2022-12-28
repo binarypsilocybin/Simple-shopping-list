@@ -90,7 +90,9 @@ const App = () => {
             onClick={() => handleAddButtonClick()}
           />
         </div>
-        <div className={noValue !== true ? 'input-message show' : ''}>
+        <div
+          className={noValue === true ? 'input-message' : 'input-message show'}
+        >
           <p>Item cannot be blank.</p>
         </div>
         <div className="item-list">

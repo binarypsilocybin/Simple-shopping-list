@@ -69,6 +69,11 @@ input:focus {
   display: none;
 }
 
+.input-message p {
+  font-size: 25px;
+  text-align: center;
+}
+
 .item-list {
   display: flex;
   flex-direction: column;
@@ -85,6 +90,7 @@ input:focus {
 
 .item-name {
   cursor: pointer;
+  width: 50%;
 }
 
 .item-name svg {
